@@ -17,7 +17,11 @@ export default function ProfileScreen() {
       <ProfileAvatar />
 
       <Text style={styles.section}>ACHIEVEMENTS</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 12 }}
+      >
         <AchievementChip icon="trophy" label="Top Buyer" active />
         <AchievementChip icon="leaf" label="Eco-Friendly" />
         <AchievementChip icon="flash" label="Early Adopter" />
@@ -72,5 +76,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 1,
     marginBottom: 12,
+    marginHorizontal: 12,
   },
 });

@@ -10,7 +10,7 @@ export function ProfileAvatar() {
         />
       </View>
 
-      <Text style={styles.name}>Alex Thompson</Text>
+      <Text style={styles.name}>Ahmed Elselly</Text>
 
       <View style={styles.row}>
         <View style={styles.badge}>
