@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 type Props = {
@@ -9,6 +10,12 @@ type Props = {
 export function DiscoveryCard({ image, title, tag }: Props) {
   return (
     <View style={styles.card}>
+      <LinearGradient
+        colors={["transparent", "rgba(0,0,0,0.85)"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={StyleSheet.absoluteFill}
+      />
       <Image source={image} style={styles.image} />
 
       {tag && (
@@ -29,11 +36,14 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginBottom: 12,
     width: 150,
+    position: "relative",
   },
+
   image: {
-    objectFit: "fill",
     width: "100%",
+    height: "100%",
   },
+
   tag: {
     position: "absolute",
     top: 12,
@@ -43,11 +53,13 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 12,
   },
+
   tagText: {
     color: "#FFF",
     fontSize: 11,
     fontWeight: "700",
   },
+
   title: {
     position: "absolute",
     bottom: 14,

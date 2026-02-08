@@ -34,18 +34,21 @@ export default function ExploreScreen() {
         <View>
           <DiscoveryCard2
             image={require("../../../assets/man_standing.jpg")}
-            title="Urban Tech"
+            title="Urban Fit"
             tag="TRENDING"
+            left={true}
           />
         </View>
         <View>
-          <DiscoveryCard
+          <DiscoveryCard2
             image={require("../../../assets/home.jpg")}
-            title="Summer Essentials"
-          />
-          <DiscoveryCard
-            image={require("../../../assets/hanging_shirts.jpg")}
             title="Minimalist Home"
+            left={false}
+          />
+          <DiscoveryCard2
+            image={require("../../../assets/hanging_shirts.jpg")}
+            title="Summer Essentials"
+            left={false}
           />
         </View>
       </View>
