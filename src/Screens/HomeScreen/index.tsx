@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
@@ -40,7 +41,12 @@ const TRENDING = [
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{
+        paddingBottom: 200,
+      }}
+    >
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.profile}>
@@ -117,12 +123,24 @@ export default function HomeScreen() {
 
       {/* Trending */}
       <Text style={styles.sectionTitle}>Trending Now</Text>
+      <View style={styles.trendingContainer}>
+        {TRENDING?.map((item) => {
+          return (
+            <View key={item.id} style={styles.trendingCard}>
+              <Image source={item.image} style={styles.trendingImage} />
+              <Text style={styles.tag}>{item.category}</Text>
+              <Text style={styles.trendingTitle}>{item.title}</Text>
+              <Text style={styles.trendingPrice}>${item.price}.00</Text>
+            </View>
+          );
+        })}
+      </View>
 
-      <FlatList
+      {/* <FlatList
         data={TRENDING}
         numColumns={2}
         columnWrapperStyle={{ gap: 12 }}
-        contentContainerStyle={{ gap: 12, marginTop: 12 }}
+        contentContainerStyle={{ gap: 12, marginTop: 12, marginBottom: 50 }}
         renderItem={({ item }) => (
           <View style={styles.trendingCard}>
             <Image source={item.image} style={styles.trendingImage} />
@@ -131,7 +149,7 @@ export default function HomeScreen() {
             <Text style={styles.trendingPrice}>${item.price}.00</Text>
           </View>
         )}
-      />
-    </View>
+      /> */}
+    </ScrollView>
   );
 }

@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#0F1C24",
     padding: 16,
     paddingTop: 40,
+    paddingBottom: 140,
   },
 
   header: {
@@ -108,6 +109,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
     marginTop: 20,
+    marginBottom: 20,
   },
 
   seeAll: {
@@ -138,11 +140,19 @@ export const styles = StyleSheet.create({
     marginTop: 4,
   },
 
+  trendingContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+    gap: 12,
+  },
+
   trendingCard: {
-    flex: 1,
     backgroundColor: "#162833",
     borderRadius: 16,
     padding: 12,
+    // flexBasis: "40%",
+    width: 150,
   },
 
   trendingImage: {
