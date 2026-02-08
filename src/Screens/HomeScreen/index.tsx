@@ -1,13 +1,25 @@
 import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
   FlatList,
   Image,
-  StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
 } from "react-native";
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
+
+const CATEGORIES = ["All", "Tech", "Fashion", "Home"];
+
+const NEW_ARRIVALS = [
+  {
+    id: "1",
+    title: "Studio Pro Pro",
+    price: 349,
+    image: require("../../../assets/shoes_white.jpg"),
+  },
+];
 
 const TRENDING = [
   {
@@ -15,42 +27,111 @@ const TRENDING = [
     title: "Sonic Boom Mini",
     price: 89,
     category: "TECH",
-    image: require("../../assets/speaker.png"),
+    image: require("../../../assets/shoes_red.jpg"),
   },
   {
     id: "2",
     title: "Zen Ceramic Vase",
     price: 45,
     category: "HOME",
-    image: require("../../assets/vase.png"),
+    image: require("../../../assets/sunglasses.jpg"),
   },
 ];
 
-const HomeScreen = () => {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.greeting}>Good Morning</Text>
-      <Text style={styles.name}>Alex Rivera</Text>
+      {/* Header */}
+      <View style={styles.header}>
+        <View style={styles.profile}>
+          <View style={styles.avatar}>
+            <Text style={styles.avatarText}>A</Text>
+          </View>
+          <View>
+            <Text style={styles.greeting}>Good Morning</Text>
+            <Text style={styles.name}>Ahmed Elselly</Text>
+          </View>
+        </View>
 
-      <Text style={styles.section}>Trending Now</Text>
+        <TouchableOpacity style={styles.bell}>
+          <Ionicons name="notifications-outline" size={22} color="#FFF" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Search */}
+      <View style={styles.searchRow}>
+        <View style={styles.search}>
+          <Ionicons name="search" size={18} color="#9FB3C8" />
+          <TextInput
+            placeholder="Search trendy products"
+            placeholderTextColor="#9FB3C8"
+            style={styles.searchInput}
+          />
+        </View>
+
+        <TouchableOpacity style={styles.filter}>
+          <Ionicons name="options-outline" size={20} color="#FFF" />
+        </TouchableOpacity>
+      </View>
+
+      {/* Categories */}
+      <FlatList
+        data={CATEGORIES}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ gap: 10, marginTop: 16 }}
+        renderItem={({ item, index }) => (
+          <TouchableOpacity
+            style={[styles.category, index === 0 && styles.categoryActive]}
+          >
+            <Text
+              style={{
+                color: index === 0 ? "#000" : "#9FB3C8",
+                fontWeight: "600",
+              }}
+            >
+              {item}
+            </Text>
+          </TouchableOpacity>
+        )}
+      />
+
+      {/* New Arrivals */}
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>New Arrivals</Text>
+        <Text style={styles.seeAll}>See All</Text>
+      </View>
+
+      <FlatList
+        data={NEW_ARRIVALS}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.newCard}>
+            <Image source={item.image} style={styles.newImage} />
+            <Text style={styles.newTitle}>{item.title}</Text>
+            <Text style={styles.newPrice}>${item.price}.00</Text>
+          </View>
+        )}
+      />
+
+      {/* Trending */}
+      <Text style={styles.sectionTitle}>Trending Now</Text>
 
       <FlatList
         data={TRENDING}
         numColumns={2}
-        keyExtractor={(item) => item.id}
         columnWrapperStyle={{ gap: 12 }}
-        contentContainerStyle={{ gap: 12 }}
+        contentContainerStyle={{ gap: 12, marginTop: 12 }}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card}>
-            <Image source={item.image} style={styles.image} />
-            <Text style={styles.category}>{item.category}</Text>
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.price}>${item.price}.00</Text>
-          </TouchableOpacity>
+          <View style={styles.trendingCard}>
+            <Image source={item.image} style={styles.trendingImage} />
+            <Text style={styles.tag}>{item.category}</Text>
+            <Text style={styles.trendingTitle}>{item.title}</Text>
+            <Text style={styles.trendingPrice}>${item.price}.00</Text>
+          </View>
         )}
       />
     </View>
   );
-};
-
-export default HomeScreen;
+}
