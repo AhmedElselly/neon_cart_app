@@ -10,6 +10,7 @@ import { styles } from "../styles/TabBarStyles";
 import HomeScreen from "../Screens/HomeScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import { BlurView } from "expo-blur";
+import ExploreScreen from "../Screens/ExploreScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,15 +55,15 @@ export default function BottomTabs() {
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Explore"
-        component={Explore}
+        component={ExploreScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon icon="compass" focused={focused} />
           ),
         }}
-      /> */}
+      />
 
       {/* Floating Cart */}
       {/* <Tab.Screen
