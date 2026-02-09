@@ -40,10 +40,9 @@ export const styles = StyleSheet.create({
 
   cartWrapper: {
     position: "absolute",
-    top: -28,
+    top: -38,
     alignItems: "center",
-    width: 80,
-    zIndex: 999999,
+    width: 64,
   },
 
   cartButton: {

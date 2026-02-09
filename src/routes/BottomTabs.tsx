@@ -12,6 +12,7 @@ import ProfileScreen from "../Screens/ProfileScreen";
 import { BlurView } from "expo-blur";
 import ExploreScreen from "../Screens/ExploreScreen";
 import CartScreen from "../Screens/CartScreen";
+import WishlistScreen from "../Screens/WishlistScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -85,15 +86,15 @@ export default function BottomTabs() {
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Wishlist"
-        component={Wishlist}
+        component={WishlistScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon icon="heart" focused={focused} />
           ),
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="Profile"
