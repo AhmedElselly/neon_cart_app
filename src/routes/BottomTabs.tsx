@@ -11,6 +11,7 @@ import HomeScreen from "../Screens/HomeScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import { BlurView } from "expo-blur";
 import ExploreScreen from "../Screens/ExploreScreen";
+import CartScreen from "../Screens/CartScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -66,19 +67,23 @@ export default function BottomTabs() {
       />
 
       {/* Floating Cart */}
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Cart"
-        component={Cart}
+        component={CartScreen}
         options={{
-          tabBarButton: (props) => (
-            <TouchableOpacity {...props} style={styles.cartWrapper}>
+          tabBarButton: ({ onPress, accessibilityState }) => (
+            <TouchableOpacity
+              onPress={onPress}
+              accessibilityState={accessibilityState}
+              style={styles.cartWrapper}
+            >
               <View style={styles.cartButton}>
                 <Ionicons name="cart" size={24} color="#FFF" />
               </View>
             </TouchableOpacity>
           ),
         }}
-      /> */}
+      />
 
       {/* <Tab.Screen
         name="Wishlist"

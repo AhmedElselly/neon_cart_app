@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.15)",
     backgroundColor: "rgba(15,28,36,0.6)", // fallback
-    overflow: "hidden",
+    // overflow: "hidden",
   },
 
   itemTab: {
@@ -43,6 +43,7 @@ export const styles = StyleSheet.create({
     top: -28,
     alignItems: "center",
     width: 80,
+    zIndex: 999999,
   },
 
   cartButton: {
